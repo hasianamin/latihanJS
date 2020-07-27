@@ -7,13 +7,27 @@
             if(!(menu > 0 || menu <= 3)) alert('input salah')
         }while(!(menu > 0 || menu <= 3))
         if(menu == 1){
-            inputan = prompt("masukkan kalimat")
-            inputan = inputan.toUpperCase()
+            inputan = prompt('masukkan kalimat')
+            inputan = inputan.split()
+            for(let i=0; i < inputan.length; i++){
+                //cek uppercase
+                cek = inputan[i].toUpperCase()
+                if(inputan[i] != cek){
+                    inputan[i] = inputan[i].toUpperCase()
+                }
+            }
             alert(inputan)
         }
         else if(menu == 2){
-            inputan = prompt("masukkan kalimat")
-            inputan = inputan.toLowerCase()
+            inputan = prompt('masukkan kalimat')
+            inputan = inputan.split()
+            for(let i=0; i < inputan.length; i++){
+                //cek uppercase
+                cek = inputan[i].toLowerCase()
+                if(inputan[i] != cek){
+                    inputan[i] = inputan[i].toLowerCase()
+                }
+            }
             alert(inputan)
         }
         else if(menu == 3){
