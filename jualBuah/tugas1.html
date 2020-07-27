@@ -10,6 +10,13 @@
         let run = true
         let output =''
         let menuUtama, inputanNama, inputanStok, inputanHarga, inputanJumlah, totalAwal, listBelanja, belanja, saldo, totalAkhir
+        function cetakOutput(){
+            output=''
+            for(let i = 0; i < namaBuah.length; i++){
+                output += `${i+1}. ${namaBuah[i]}, stok ${stok[i]}, harga Rp${price[i]}\n`
+            }
+            return output
+        }
 
         alert('selamat datang')
 
@@ -22,11 +29,7 @@
             }while(!(menuUtama >= 1 && menuUtama <= 5))
 
             while(menuUtama == 1){
-                output=''
-                for(let i = 0; i < namaBuah.length; i++){
-                    output += `${i+1}. ${namaBuah[i]}, stok ${stok[i]}, harga Rp${price[i]}\n`
-                }
-                pilihBuah = parseInt(prompt(output))
+                pilihBuah = parseInt(prompt(cetakOutput()))
                 if(pilihBuah > namaBuah.length){
                     alert('input salah')
                 }else{
@@ -97,11 +100,7 @@
                 stok.push(inputanStok)
                 inputanHarga = parseInt(prompt('masukkan harga satuan'))
                 price.push(inputanHarga)  
-                output=''
-                for(let i=0; i < namaBuah.length; i++){
-                    output += `${i+1}. ${namaBuah[i]}, stok ${stok[i]}, harga Rp${price[i]}\n`
-                }
-                alert(output)
+                alert(cetakOutput())
             }
             else if(menuUtama == 3){
                 output=''
@@ -116,18 +115,10 @@
                 stok[delBuah - 1] = inputanStok
                 let inputanHarga = parseInt(prompt('masukkan harga satuan'))
                 price[delBuah - 1] = inputanHarga  
-                output=''
-                for(let i=0; i < namaBuah.length; i++){
-                    output += `${i+1}. ${namaBuah[i]}, stok ${stok[i]}, harga Rp${price[i]}\n`
-                }
-                alert(output)
+                alert(cetakOutput())
             }
             else if(menuUtama == 4){
-                output=''
-                for(let i=0; i < namaBuah.length; i++){
-                    output += `${i+1}. ${namaBuah[i]}, stok ${stok[i]}, harga Rp${price[i]}\n`
-                }
-                alert(output)
+                alert(cetakOutput())
             }
             else if(menuUtama == 5){
                 alert('Selamat Tinggal')
