@@ -1,0 +1,72 @@
+<html>
+    <script>
+        let run = true
+        alert('selamat datang')
+        while(run){
+            // jml stok dan harga
+            let stokApple = 10
+            let stokJeruk = 10
+            let stokMangga = 10
+            let hrgApple = 5000
+            let hrgJeruk = 4000
+            let hrgMangga = 6000
+            // jml stok
+            
+            //input jml buah dan uang
+            let jmlApple, jmlJeruk, jmlMangga
+
+            do{
+                jmlApple = parseInt(prompt('Jumlah Apple'))
+                if(jmlApple > stokApple){
+                    alert('stok buah kurang')
+                }
+            }
+            while(jmlApple > stokApple)
+            do{
+                jmlJeruk = prompt('Jumlah Jeruk')
+                if(jmlJeruk > stokJeruk){
+                    alert('stok buah kurang')
+                }
+            }
+            while(jmlJeruk > stokJeruk)
+            do{
+                jmlMangga = prompt('Jumlah Mangga')
+                if(jmlMangga > stokMangga){
+                    alert('stok buah kurang')
+                }
+            }
+            while(jmlMangga > stokMangga)
+            //input jml buah
+
+            let total = (jmlApple * hrgApple) + (jmlJeruk * hrgJeruk) + (jmlMangga * hrgMangga)
+            alert(`
+            harga apel = Rp${hrgApple}  x jml apel = ${jmlApple}
+            harga jeruk = Rp${hrgJeruk} x jml jeruk = ${jmlJeruk}
+            harga mangga = Rp${hrgMangga} x jml mangga = ${jmlMangga}
+            total = Rp${total}`)
+            let uangPembeli = prompt('Masukkan uang anda')
+            if(uangPembeli < total){
+                alert('uang tidak cukup')
+            }
+            else{
+                stokApple -= jmlApple
+                stokJeruk -= jmlJeruk
+                stokMangga -= jmlMangga
+                console.log(stokApple)
+                console.log(stokJeruk)
+                console.log(stokMangga)
+                let kembalian = Math.abs(total - uangPembeli)
+                if(kembalian == 0){
+                    alert('terima kasih')
+                }
+                else{
+                    alert('kembalian anda Rp' + kembalian)
+                    alert('terima kasih')
+                    console.log(typeof(kembalian))
+                }
+            }
+            run = confirm('belanja lagi?')
+        }
+        alert('selesai')
+    </script>
+</html>

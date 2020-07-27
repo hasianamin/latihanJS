@@ -1,0 +1,21 @@
+<html>
+    <script>
+        let inputan = prompt("Masukkan Angka")
+        if((inputan%2) == 0){
+            alert(`
+            Angka yang ${inputan} merupakan bilangan genap`)
+        }
+        else{
+            alert(`
+            Angka yang ${inputan} merupakan bilangan ganjil`)
+        }
+        let res = inputan%2
+        switch(res){
+            case (0):
+                console.log('Genap')
+                break;
+            default:
+                console.log('Ganjil')
+        }
+    </script>
+</html>

@@ -1,0 +1,15 @@
+<html>
+    <script>
+        let run = true
+        while(run){
+            let inputan = prompt('silahkan masukkan kalimat')
+            let find = prompt('cari jumlah huruf atau kata')
+            let reg = new RegExp(find,"g")
+            let countA = (inputan.match(reg) || []).length
+            // console.log(countA)
+            alert(`Jumlah ${find} pada kalimat = ${countA}`)
+            run = confirm('Mulai lagi?')
+        }
+        alert('selesai')
+    </script>
+</html>

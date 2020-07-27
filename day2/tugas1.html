@@ -1,0 +1,21 @@
+<html>
+    <script>
+        let run = true
+        while(run){
+            let jmlApple = prompt('Jumlah Apple')
+            let jmlJeruk = prompt('Jumlah Jeruk')
+            let jmlMangga = prompt('Jumlah Mangga')
+            let hrgApple = 5000
+            let hrgJeruk = 4000
+            let hrgMangga = 6000
+            let total = (jmlApple * hrgApple) + (jmlJeruk * hrgJeruk) + (jmlMangga * hrgMangga)
+            alert(`
+            harga apel = Rp${hrgApple}  x jml apel = ${jmlApple}
+            harga jeruk = Rp${hrgJeruk} x jml jeruk = ${jmlJeruk}
+            harga mangga = Rp${hrgMangga} x jml mangga = ${jmlMangga}
+            total = Rp${total}`)
+            run = confirm('Mulai lagi?')
+        }
+        alert('selesai')
+    </script>
+</html>

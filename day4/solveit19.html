@@ -1,0 +1,18 @@
+<html>
+    <script>
+        let s=''
+        for(let i=0; i < 10; i++){
+            for(let j=0; j < 19; j++){
+                let nilaiTengah = Math.floor(19/2) //gunakan nilai tengah untuk membantu
+                if((j<nilaiTengah-i)||(j>nilaiTengah+i)){ //kondisi 1 merubah sisi kiri | kondisi 2 merubah sisi kanan | nilai tengah akan melebar
+                    s+=' '
+                }
+                else{
+                    s+='*'
+                }
+            }
+            s+='\n'
+        }
+        console.log(s)
+    </script>
+</html>

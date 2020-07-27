@@ -1,0 +1,16 @@
+<html>
+    <script>
+        let jarak = 120
+        let kecepatanA = 60
+        let kecepatanB = 40
+        const jam = 9
+        let kecepatanTotal = kecepatanA + kecepatanB
+        let waktu = jarak / kecepatanTotal
+        let hasilMnt = waktu * 60
+        let mntTambah = hasilMnt % 60
+        let jamTambah = (hasilMnt - mntTambah) / 60
+        let res = jam + jamTambah
+        console.log(`
+        hasil akhir =  pukul ${res}:${mntTambah}`)
+    </script>
+</html>

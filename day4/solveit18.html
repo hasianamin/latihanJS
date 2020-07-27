@@ -1,0 +1,33 @@
+<html>
+    <script>
+        let s=''
+        let limitJ=3 //nilai k harus sama dengan nilai j, somehow ga bisa ambil dari limitJ
+        let limitI=6 //berlaku jika i = 2j
+        let nilaiT=Math.floor(limitI/2+1)
+        
+        for(let i=0; i <= limitI; i++){
+            if(i >= nilaiT){ //kalo kondisi i >= nilai tengah ke sini buat cetak separuh bawah
+                for(let k=3; k <= limitI; k++){
+                    if(k>i){
+                        s+='-'
+                    }
+                    else{
+                        s+='*'
+                    }
+                }
+                s+='\n'
+            }else{ //pertama ke sini karna i < nilai tengah
+                for(let j=0; j <= limitJ; j++){ 
+                    if(j>limitJ-i){ //bentuk rata kiri cetak separuh atas
+                        s+='-'
+                    }
+                    else{
+                        s+='*'
+                    }
+                }
+                s+='\n'
+            }
+        }
+        console.log(s)
+    </script>
+</html>

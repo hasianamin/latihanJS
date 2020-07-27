@@ -1,0 +1,19 @@
+<html>
+    <script>
+        let s=''
+        let limitJ=19
+        for(let i=0; i < 10; i++){
+            for(let j=0; j < limitJ; j++){
+                if((j<i)||(j >= limitJ-i)){ //untuk sisi kiri, nilai j < i | untuk sisi kanan j lbh besar dari nilai batas j + i
+                    s+=' '
+                }
+                else{
+                    s+='*'
+                }
+
+            }
+            s+='\n'
+        }
+        console.log(s)
+    </script>
+</html>

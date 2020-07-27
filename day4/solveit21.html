@@ -1,0 +1,30 @@
+<html>
+    <script>
+        let s=''
+        let tinggi = 21
+        let lebar = 40
+        let nilaiTengahLebar = Math.floor(lebar/2) //gunakan nilai tengah untuk membantu
+        let nilaiTengahTinggi = Math.floor(tinggi/2)
+        for(let i=0; i < tinggi; i++){
+            if(i > nilaiTengahTinggi){
+                for(let k = 0; k < lebar; k++){
+                    if((k < i)||(k > lebar - i)){ //kondisi 1 merubah sisi kiri | kondisi 2 merubah sisi kanan | nilai tengah akan melebar
+                        s+='-'
+                    }else{
+                        s+='*'
+                    }
+                }
+            }else{
+                for(let j = 0; j < lebar; j++){
+                    if((j < nilaiTengahLebar - i)||(j > nilaiTengahLebar + i)){ //kondisi 1 merubah sisi kiri | kondisi 2 merubah sisi kanan | nilai tengah akan melebar
+                        s+='-'
+                    }else{
+                        s+='*'
+                    }
+                }
+            }
+            s+='\n'
+        }
+        console.log(s)
+    </script>
+</html>

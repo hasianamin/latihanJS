@@ -1,0 +1,28 @@
+<html>
+    <script>
+        let run = true
+        while(run){
+            let inputan = prompt('Masukkan jumlah hari')
+            let cekTahun = inputan / 360
+            let tahun = Math.trunc(cekTahun)
+            let sisaHari
+            let bulan 
+    
+            sisaHari = inputan - (360 * tahun)
+            cekBulan = sisaHari / 30
+            bulan = Math.trunc(cekBulan)
+            sisaHari = sisaHari - (30 * bulan)
+            cekMinggu = sisaHari / 7
+            minggu = Math.trunc(cekMinggu)
+            hari = sisaHari - (7 * minggu)
+            alert(`
+            Input = ${inputan}
+            Tahun = ${tahun} 
+            bulan = ${bulan} 
+            minggu = ${minggu} 
+            hari = ${hari}`)
+            run = confirm('Mulai lagi?')
+        }
+        alert('selesai')
+    </script>
+</html>

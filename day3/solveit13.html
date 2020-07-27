@@ -1,0 +1,28 @@
+<html>
+    <script>
+        let start = true
+        while(start){
+            let massa = prompt('masukkan massa')
+            let tinggi = prompt('masukkan tinggi')
+            let imt = massa/(tinggi**2)
+            console.log(imt)
+            if (imt <= 18.5){
+                alert('berat anda kurang')
+            } 
+            else if (imt <= 24.9) {
+                alert('berat anda ideal')
+            }
+            else if (imt <= 29.9) {
+                alert('berat anda lebih')
+            }
+            else if (imt <= 39.9) {
+                alert('berat anda sangat lebih')
+            }
+            else{
+                alert('berat anda obesitas')
+            }
+            start = confirm('mulai lagi?')
+        }
+        alert('selesai')
+    </script>
+</html>

@@ -1,0 +1,20 @@
+<html>
+    <script>
+        let run = true
+        while(run){
+            let masuk = prompt('Masukkan jam datang')
+            let keluar = prompt('Masukkan jam keluar')
+            if((masuk > 25)||(keluar > 25)){
+                alert('jam tidak lbh dari 24')
+            }
+            total = keluar - masuk
+            harga = total * 2000
+            alert(`
+            jam masuk = ${masuk}
+            jam keluar = ${keluar}
+            total = ${harga}`)
+            run = confirm('Mulai lagi?')
+        }
+        alert('selesai')
+    </script>
+</html>

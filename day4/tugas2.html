@@ -1,0 +1,74 @@
+<html>
+    <script>
+        let run = true
+        while(run){
+            alert('selamat datang')
+            let mobilotor, masukjam, keluarjam, kondisi1, kondisi2
+            do{
+                mobilotor = parseInt(prompt('1.mobil\n2.motor'))
+                if((mobilotor!==1)&&(mobilotor!==2)||(Object.is(NaN))||(Object.is(null))){
+                    alert('input salah')
+                }
+            }
+            while((mobilotor!==1)&&(mobilotor!==2))
+            do{
+                masukjam = parseInt(prompt('jam masuk 1-12'))
+                if((masukjam > 12)||(masukjam < 0)||(Object.is(NaN))||(Object.is(null))){
+                    alert('input salah')
+                }
+            }
+            while((masukjam > 12)||(masukjam < 0))
+            do{
+                kondisi1 = parseInt(prompt('1.AM\n2.PM'))
+                if((kondisi1!==1)&&(kondisi1!==2)||(Object.is(NaN))||(Object.is(null))){
+                    alert('input salah')
+                }
+            }
+            while((kondisi1!==1)&&(kondisi1!==2))
+            do{
+                keluarjam = parseInt(prompt('jam keluar 1-12'))
+                if((keluarjam > 12)||(keluarjam < 0)||(Object.is(NaN))||(Object.is(null))){
+                    alert('input salah')
+                }
+            }
+            while((keluarjam > 12)||(keluarjam < 0))
+            do{
+                kondisi2 = parseInt(prompt('1.AM\n2.PM'))
+                if((kondisi2!==1)&&(kondisi2!==2)||(Object.is(NaN))||(Object.is(null))){
+                    alert('input salah')
+                }
+            }
+            while((kondisi2!==1)&&(kondisi2!==2))
+            let totaljam
+            if(kondisi1 !== kondisi2){
+                keluarjam+=12
+            }
+            else if((keluarjam<=masukjam) && (kondisi1==kondisi2)){
+                keluarjam+=24
+            }
+            totaljam=keluarjam-masukjam
+
+            var biayaperjammotor=1000
+            var biayaperjammobil=2000
+            var biaya2jamper=5000
+            var biaya2jampermot=3000
+            var totalbayar
+            if(totaljam<=2){
+                if(mobilotor==1){
+                    totalbayar=biaya2jamper*totaljam
+                }else{
+                    totalbayar=biaya2jampermot*totaljam
+                }
+            }else{
+                if(mobilotor==1){
+                    totalbayar=((totaljam-2)*biayaperjammobil)+(biaya2jamper*2)
+                }else{
+                    totalbayar=((totaljam-2)*biayaperjammotor)+(biaya2jampermot*2)
+                }
+            }
+            alert('kamu parkir '+totaljam+ ' jam biaya Rp.'+totalbayar)
+            run = confirm('mulai lagi?')
+        }
+        alert('terimakasih')
+    </script>
+</html>

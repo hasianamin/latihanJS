@@ -1,0 +1,43 @@
+<html>
+    <script>
+        let menu = 0
+        let inputan = 0
+        do{
+            menu = parseInt(prompt('1. Uppercase\n2.Lowercase\n3.Ubah Huruf'))
+            if(!(menu > 0 || menu <= 3)) alert('input salah')
+        }while(!(menu > 0 || menu <= 3))
+        if(menu == 1){
+            inputan = prompt("masukkan kalimat")
+            inputan = inputan.toUpperCase()
+            alert(inputan)
+        }
+        else if(menu == 2){
+            inputan = prompt("masukkan kalimat")
+            inputan = inputan.toLowerCase()
+            alert(inputan)
+        }
+        else if(menu == 3){
+            inputan = prompt("masukkan kalimat")
+            inputan = inputan.split('')
+            //ubah halo duniz menjadi ibkp evoja
+            let alp = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+            for (let i = 0; i < inputan.length; i++){
+                //cek index huruf
+                for(let j = 0; j < alp.length; j++){
+                    if(inputan[i] == 'z'){
+                        inputan[i] = 'a'
+                    }else{
+                        if(inputan[i] == alp[j]){
+                            inputan[i] = alp[j+1]
+                            break
+                        }
+                    }
+                }
+            }
+            alert(inputan.join(''))
+        }
+        else{
+            alert('input salah')
+        }
+    </script>
+</html>

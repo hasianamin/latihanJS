@@ -1,0 +1,58 @@
+<html>
+    <script>
+        let run = true
+        while(run){
+            // jml stok dan harga
+            let stokApple = 10
+            let stokJeruk = 10
+            let stokMangga = 10
+            let hrgApple = 5000
+            let hrgJeruk = 4000
+            let hrgMangga = 6000
+            // jml stok
+            
+            //input jml buah dan uang
+            let jmlApple = prompt('Jumlah Apple')
+            let jmlJeruk = prompt('Jumlah Jeruk')
+            let jmlMangga = prompt('Jumlah Mangga')
+            //input jml buah
+
+            //cek stok
+            if((jmlApple > stokApple) || (jmlJeruk > stokJeruk) || (jmlMangga > stokMangga)){
+                alert('stok buah tidak cukup')
+            }
+            //cek stok
+            else{
+                let total = (jmlApple * hrgApple) + (jmlJeruk * hrgJeruk) + (jmlMangga * hrgMangga)
+                alert(`
+                harga apel = Rp${hrgApple}  x jml apel = ${jmlApple}
+                harga jeruk = Rp${hrgJeruk} x jml jeruk = ${jmlJeruk}
+                harga mangga = Rp${hrgMangga} x jml mangga = ${jmlMangga}
+                total = Rp${total}`)
+                let uangPembeli = prompt('Masukkan uang anda')
+                if(uangPembeli < total){
+                    alert('uang tidak cukup')
+                }
+                else{
+                    stokApple -= jmlApple
+                    stokJeruk -= jmlJeruk
+                    stokMangga -= jmlMangga
+                    console.log(stokApple)
+                    console.log(stokJeruk)
+                    console.log(stokMangga)
+                    let kembalian = Math.abs(total - uangPembeli)
+                    if(kembalian == 0){
+                        alert('terima kasih')
+                    }
+                    else{
+                        alert('kembalian anda Rp' + kembalian)
+                        alert('terima kasih')
+                        console.log(typeof(kembalian))
+                    }
+                }
+            }
+            run = confirm('Mulai lagi?')
+        }
+        alert('selesai')
+    </script>
+</html>

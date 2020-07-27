@@ -1,0 +1,73 @@
+<html>
+    <script>
+        let run = true
+        while(run){
+            let initCost, costPerJam, harga, durasi, kendaraan, statusMasuk, statusKeluar
+            let jenisKendaraan = confirm('Pilih ok untuk mobil, tekan cancel untuk motor' )
+            if(jenisKendaraan == true){
+                jenisKendaraan = 2
+                kategori = 'Mobil'
+            }else{
+                jenisKendaraan = 1
+                kategori = 'Motor'
+            }
+            let inputJamMasuk = prompt('Masukkan jam datang (1-12)')
+            let jenisJamMasuk = confirm('pilih ok untuk PM, tekan cancel untuk AM')
+            if(jenisJamMasuk == true){
+                jenisJamMasuk = 2
+            }else{
+                jenisJamMasuk = 1
+            }
+            let inputJamKeluar = prompt('Masukkan jam keluar(1-12)')
+            let jenisJamKeluar = confirm('pilih ok untuk PM, tekan cancel untuk AM')
+            if(jenisJamKeluar == true){
+                jenisJamKeluar = 2
+            }else{
+                jenisJamKeluar = 1
+            }
+            jamMasuk = parseInt(inputJamMasuk)
+            jamKeluar = parseInt(inputJamKeluar)
+
+            if(jenisKendaraan == 1){
+                initCost = 6000 //untuk 2 jam pertama
+                costPerJam = 1000 //perjam
+                kendaraan = 'motor'
+            }else{
+                initCost = 10000 //untuk 2 jam pertama
+                costPerJam = 2000 //perjam
+                kendaraan = 'mobil'
+            }
+
+            if((jamMasuk > 12)||(jamKeluar > 12)){
+                alert('jam tidak lbh dari 12 menggunakan AM/PM')
+            }else{
+                if((jenisJamMasuk == '2')&&(jenisJamKeluar == '1')){
+                    jamMasuk -= 12 //jika jam masuk pm jam keluar am
+                    statusMasuk = 'PM'
+                    statusKeluar = 'AM'
+                }else if((jenisJamMasuk == '1')&&(jenisJamKeluar == '2')){
+                    jamKeluar += 12 //jika jam masuk am jam keluar pm
+                    statusMasuk = 'AM'
+                    statusKeluar = 'PM'
+                }
+                durasi = jamKeluar - jamMasuk
+                if(durasi > 2){
+                    harga = ((durasi-2) * costPerJam) + initCost
+                }else if(durasi==1){
+                    initCost /= 2
+                    harga = initCost
+                }else{
+                    harga = initCost
+                }
+                alert(`
+                jenis kendaraan = ${kategori}
+                jam masuk = ${inputJamMasuk} ${statusMasuk}
+                jam keluar = ${inputJamKeluar} ${statusKeluar}
+                durasi = ${durasi} jam
+                total = Rp${harga}`)
+            }
+            run = confirm('Mulai lagi?')
+        }
+        alert('selesai')
+    </script>
+</html>
