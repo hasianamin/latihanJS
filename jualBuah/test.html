@@ -1,0 +1,145 @@
+<html>
+    <script>
+        let ListFruit = []
+
+        class DetailFruit{
+            constructor(_name, _price, _stock){
+                this.name = _name
+                this.price = _price
+                this.stock = _stock
+            }
+        }
+
+        let Fruit = new DetailFruit('apple',10000,5)
+        ListFruit.push(Fruit)
+        Fruit = new DetailFruit('orange',15000,7)
+        ListFruit.push(Fruit)
+        Fruit = new DetailFruit('grape',20000,8)
+        ListFruit.push(Fruit)
+
+
+        let Cart = {
+            name  : [],
+            price : [],
+            stock : [],
+            total : []
+        }
+
+        let run = true
+        let output =''
+        let home, inputName, inputStock, inputPrice, inputAmount, totalInit, listCart, shopping, balance, totalFinal, choose
+        function generateOutput(){
+            output=''
+            for(let i = 0; i < ListFruit.length; i++){
+                output += `${i+1}. ${ListFruit[i].name}, stok ${ListFruit[i].stock}, harga Rp${ListFruit[i].price}\n`
+            }
+            return output
+        }
+
+        alert('selamat datang')
+
+        while(run){
+            do{
+                home=parseInt(prompt('Pilih menu\n1. Belanja\n2. Tambah Buah\n3. Edit Buah\n4. Tampilkan Buah\n5. Exit'))
+                if(!(home >= 1 && home <= 5)){
+                    alert('input salah')
+                }
+            }while(!(home >= 1 && home <= 5))
+
+            while(home == 1){
+                choose = parseInt(prompt(generateOutput()))
+                if(choose > ListFruit.length){
+                    alert('input salah')
+                }else{
+                    if((choose >= 1)||(choose <= ListFruit.length)){
+                        inputAmount = parseInt(prompt('berapa banyak '+ ListFruit[choose-1].name +'?'))
+                        if(inputAmount > ListFruit[choose-1].stock){
+                            alert(`stok ${ListFruit[choose-1].name} tidak cukup, stok = ${ListFruit[choose-1].stock}`)
+                        }else{
+                            Cart.name.push(ListFruit[choose-1].name)
+                            Cart.stock.push(inputAmount)
+                            Cart.price.push(ListFruit[choose-1].price)
+                            Cart.total.push(ListFruit[choose-1].price * inputAmount)
+                            ListFruit[choose-1].stock -= inputAmount
+                            shopping = confirm('Tekan ok untuk Tambah keranjang\nTekan cancel untuk Bayar')
+                            if(shopping==true){
+                                home = 1
+                            }else{
+                                listCart = ''
+                                for(let j = 0; j < Cart.name.length; j++){
+                                    listCart += `${j+1}. ${Cart.name[j]}, jumlah ${Cart.stock[j]}, harga Rp${Cart.price[j]} = Rp${Cart.total[j]}\n`
+                                }
+                                totalFinal = Cart.total.reduce((a, b) => a + b, 0)
+                                listCart += `Total Bayar = Rp${totalFinal}`
+                                balance = parseInt(prompt(listCart))
+                                if(balance < totalFinal){
+                                    ListFruit[choose-1].stock += inputAmount
+                                    Cart.name = []
+                                    Cart.stock = []
+                                    Cart.price = []
+                                    Cart.total = []
+                                    alert('Uang anda kurang')
+                                }else{
+                                    balance -= totalFinal
+                                    if(balance > 0){
+                                        Cart.name = []
+                                        Cart.stock = []
+                                        Cart.price = []
+                                        Cart.total = []
+                                        alert('kembalian anda Rp'+balance)
+                                        home = confirm('Mau shopping lagi?')
+                                        if(home == false){
+                                            home = 6
+                                        }
+                                    }else{
+                                        Cart.name = []
+                                        Cart.stock = []
+                                        Cart.price = []
+                                        Cart.total = []
+                                        alert('terimakasih')
+                                        home = confirm('Mau shopping lagi?')
+                                        if(home == false){
+                                            home = 6
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            // home = confirm('shopping lagi?')
+
+            if(home == 2){
+                inputName = prompt('masukkan nama buah')
+                inputName = inputName.toLowerCase()
+                inputStock = parseInt(prompt('masukkan stok buah'))
+                inputPrice = parseInt(prompt('masukkan harga satuan'))
+                Fruit = new DetailFruit(inputName,inputPrice,inputStock)
+                ListFruit.push(Fruit)
+                alert(generateOutput())
+            }
+            else if(home == 3){
+                choose = parseInt(prompt(generateOutput()))
+                inputName = prompt('masukkan nama buah')
+                inputName = inputName.toLowerCase()
+                ListFruit[choose-1].name = inputName
+                let inputStock = parseInt(prompt('masukkan stok buah'))
+                ListFruit[choose-1].stock = inputStock
+                let inputPrice = parseInt(prompt('masukkan harga satuan'))
+                ListFruit[choose-1].price = inputPrice
+                alert(generateOutput())
+            }
+            else if(home == 4){
+                alert(generateOutput())
+            }
+            else if(home == 5){
+                alert('Selamat Tinggal')
+                run = false
+            }
+            else{
+                run = true
+            }
+        }
+    </script>
+</html>
