@@ -8,47 +8,75 @@
         }while(!(menu > 0 || menu <= 3))
         if(menu == 1){
             inputan = prompt('masukkan kalimat')
-            inputan = inputan.split()
-            for(let i=0; i < inputan.length; i++){
-                //cek uppercase
-                cek = inputan[i].toUpperCase()
-                if(inputan[i] != cek){
-                    inputan[i] = inputan[i].toUpperCase()
-                }
-            }
-            alert(inputan)
-        }
-        else if(menu == 2){
-            inputan = prompt('masukkan kalimat')
-            inputan = inputan.split()
-            for(let i=0; i < inputan.length; i++){
-                //cek uppercase
-                cek = inputan[i].toLowerCase()
-                if(inputan[i] != cek){
-                    inputan[i] = inputan[i].toLowerCase()
-                }
-            }
-            alert(inputan)
-        }
-        else if(menu == 3){
-            inputan = prompt("masukkan kalimat")
-            inputan = inputan.split('')
-            //ubah halo duniz menjadi ibkp evoja
-            let alp = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
-            for (let i = 0; i < inputan.length; i++){
-                //cek index huruf
-                for(let j = 0; j < alp.length; j++){
-                    if(inputan[i] == 'z'){
-                        inputan[i] = 'a'
-                    }else{
-                        if(inputan[i] == alp[j]){
-                            inputan[i] = alp[j+1]
+            function hurufBesar(kata){
+                let hurufBesar = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+                let hurufKecil = 'abcdefghijklmnopqrstuvwxyz'
+                let output = ''
+                for(let i=0; i<kata.length; i++){
+                    for(let j=0; j<hurufKecil.length; j++){
+                        if(kata[i] == hurufKecil[j]){
+                            output += hurufBesar[j]
+                            break
+                        }else if(kata[i] == ' '){
+                            output += ' '
+                            break
+                        }else if(kata[i] >= 0){
+                            output = 'input salah'
                             break
                         }
                     }
                 }
+                return output
             }
-            alert(inputan.join(''))
+            alert(hurufBesar(inputan))
+        }
+        else if(menu == 2){
+            inputan = prompt('masukkan kalimat')
+            function hurufKecil(kata){
+                let hurufBesar = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+                let hurufKecil = 'abcdefghijklmnopqrstuvwxyz'
+                let output = ''
+                for(let i=0; i<kata.length; i++){
+                    for(let j=0; j<hurufBesar.length; j++){
+                        if(kata[i] == hurufBesar[j]){
+                            output += hurufKecil[j]
+                            break
+                        }else if(kata[i] == ' '){
+                            output += ' '
+                            break
+                        }else if(kata[i] >= 0){
+                            output = 'input salah'
+                            break
+                        }
+                    }
+                }
+                return output
+            }
+            alert(hurufKecil(inputan))
+        }
+        else if(menu == 3){
+            inputan = prompt("masukkan kalimat")
+            inputan = inputan.split('')
+            function tambahSatu(kata) {
+                let alp = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+                for (let i = 0; i < kata.length; i++){
+                    //cek index huruf
+                    for(let j = 0; j < alp.length; j++){
+                        if(kata[i] == 'z'){
+                            kata[i] = 'a'
+                        }else{
+                            if(kata[i] == alp[j]){
+                                kata[i] = alp[j+1]
+                                break
+                            }
+                        }
+                    }
+                }
+                inputan = inputan.join('')
+                return inputan
+            }
+            alert(tambahSatu(inputan))
+            //ubah halo duniz menjadi ibkp evoja
         }
         else{
             alert('input salah')
