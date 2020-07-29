@@ -30,9 +30,9 @@
         let home, inputName, inputStock, inputPrice, inputAmount, totalInit, listCart, shopping, balance, totalFinal, choose
         function generateOutput(){
             output=''
-            for(let i = 0; i < ListFruit.length; i++){
-                output += `${i+1}. ${ListFruit[i].name}, stok ${ListFruit[i].stock}, harga Rp${ListFruit[i].price}\n`
-            }
+            ListFruit.forEach((function(fruit, index){
+                output += `${index+1}. ${fruit.name}, stok ${fruit.stock}, harga Rp${fruit.price}\n`
+            }))
             return output
         }
 
