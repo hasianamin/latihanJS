@@ -1,32 +1,37 @@
 <html>
     <script>
-        // let cartBuah = []
-        // let cartHarga = []
-        // let cartJumlah = []
-        // let cartTotal = []
-        // let namaBuah = ['apple','orange','grape']
-        // let price = [10000,15000,20000]
-        // let stok = [5,7,8]
-        let Buah = {
-            nama : ['apple','orange','grape'],
-            price : [10000,15000,20000],
-            stok : [5,7,8]
+        let ListFruit = []
+
+        class DetailFruit{
+            constructor(_name, _price, _stock){
+                this.name = _name
+                this.price = _price
+                this.stock = _stock
+            }
         }
 
+        let Fruit = new DetailFruit('apple',10000,5)
+        ListFruit.push(Fruit)
+        Fruit = new DetailFruit('orange',15000,7)
+        ListFruit.push(Fruit)
+        Fruit = new DetailFruit('grape',20000,8)
+        ListFruit.push(Fruit)
+
+
         let Cart = {
-            nama  : [],
+            name  : [],
             price : [],
-            stok : [],
+            stock : [],
             total : []
         }
 
         let run = true
         let output =''
-        let menuUtama, inputanNama, inputanStok, inputanHarga, inputanJumlah, totalAwal, listBelanja, belanja, saldo, totalAkhir
-        function cetakOutput(){
+        let home, inputName, inputStock, inputPrice, inputAmount, totalInit, listCart, shopping, balance, totalFinal, choose
+        function generateOutput(){
             output=''
-            for(let i = 0; i < Buah.nama.length; i++){
-                output += `${i+1}. ${Buah.nama[i]}, stok ${Buah.stok[i]}, harga Rp${Buah.price[i]}\n`
+            for(let i = 0; i < ListFruit.length; i++){
+                output += `${i+1}. ${ListFruit[i].name}, stok ${ListFruit[i].stock}, harga Rp${ListFruit[i].price}\n`
             }
             return output
         }
@@ -35,66 +40,66 @@
 
         while(run){
             do{
-                menuUtama=parseInt(prompt('Pilih menu\n1. Belanja\n2.Tambah Buah\n3.Edit Buah\n4.Tampilkan Buah\n5.Exit'))
-                if(!(menuUtama >= 1 && menuUtama <= 5)){
+                home=parseInt(prompt('Pilih menu\n1. Belanja\n2. Tambah Buah\n3. Edit Buah\n4. Tampilkan Buah\n5. Exit'))
+                if(!(home >= 1 && home <= 5)){
                     alert('input salah')
                 }
-            }while(!(menuUtama >= 1 && menuUtama <= 5))
+            }while(!(home >= 1 && home <= 5))
 
-            while(menuUtama == 1){
-                pilihBuah = parseInt(prompt(cetakOutput()))
-                if(pilihBuah > Buah.nama.length){
+            while(home == 1){
+                choose = parseInt(prompt(generateOutput()))
+                if(choose > ListFruit.length){
                     alert('input salah')
                 }else{
-                    if((pilihBuah >= 1)||(pilihBuah <= Buah.nama.length)){
-                        inputanJumlah = parseInt(prompt('berapa banyak '+ Buah.nama[pilihBuah-1] +'?'))
-                        if(inputanJumlah > Buah.stok[pilihBuah-1]){
-                            alert(`stok ${Buah.nama[pilihBuah-1]} tidak cukup, stok = ${Buah.stok[pilihBuah-1]}`)
+                    if((choose >= 1)||(choose <= ListFruit.length)){
+                        inputAmount = parseInt(prompt('berapa banyak '+ ListFruit[choose-1].name +'?'))
+                        if(inputAmount > ListFruit[choose-1].stock){
+                            alert(`stok ${ListFruit[choose-1].name} tidak cukup, stok = ${ListFruit[choose-1].stock}`)
                         }else{
-                            Cart.nama.push(Buah.nama[pilihBuah-1])
-                            Cart.stok.push(inputanJumlah)
-                            Cart.price.push(Buah.price[pilihBuah-1])
-                            Cart.total.push(Buah.price[pilihBuah-1] * inputanJumlah)
-                            Buah.stok[pilihBuah-1] -= inputanJumlah
-                            belanja = confirm('Tekan ok untuk Tambah keranjang\nTekan cancel untuk Bayar')
-                            if(belanja==true){
-                                menuUtama = 1
+                            Cart.name.push(ListFruit[choose-1].name)
+                            Cart.stock.push(inputAmount)
+                            Cart.price.push(ListFruit[choose-1].price)
+                            Cart.total.push(ListFruit[choose-1].price * inputAmount)
+                            ListFruit[choose-1].stock -= inputAmount
+                            shopping = confirm('Tekan ok untuk Tambah keranjang\nTekan cancel untuk Bayar')
+                            if(shopping==true){
+                                home = 1
                             }else{
-                                listBelanja = ''
-                                for(let j = 0; j < Cart.nama.length; j++){
-                                    listBelanja += `${j+1}. ${Cart.nama[j]}, jumlah ${Cart.stok[j]}, harga Rp${Cart.price[j]} = Rp${Cart.total[j]}\n`
+                                listCart = ''
+                                for(let j = 0; j < Cart.name.length; j++){
+                                    listCart += `${j+1}. ${Cart.name[j]}, jumlah ${Cart.stock[j]}, harga Rp${Cart.price[j]} = Rp${Cart.total[j]}\n`
                                 }
-                                totalAkhir = Cart.total.reduce((a, b) => a + b, 0)
-                                listBelanja += `Total Bayar = Rp${totalAkhir}`
-                                saldo = parseInt(prompt(listBelanja))
-                                if(saldo < totalAkhir){
-                                    Buah.stok[pilihBuah-1] += inputanJumlah
-                                    Cart.nama = []
-                                    Cart.stok = []
+                                totalFinal = Cart.total.reduce((a, b) => a + b, 0)
+                                listCart += `Total Bayar = Rp${totalFinal}`
+                                balance = parseInt(prompt(listCart))
+                                if(balance < totalFinal){
+                                    ListFruit[choose-1].stock += inputAmount
+                                    Cart.name = []
+                                    Cart.stock = []
                                     Cart.price = []
                                     Cart.total = []
                                     alert('Uang anda kurang')
                                 }else{
-                                    saldo -= totalAkhir
-                                    if(saldo > 0){
-                                        Cart.nama = []
-                                        Cart.stok = []
+                                    balance -= totalFinal
+                                    if(balance > 0){
+                                        Cart.name = []
+                                        Cart.stock = []
                                         Cart.price = []
                                         Cart.total = []
-                                        alert('kembalian anda Rp'+saldo)
-                                        menuUtama = confirm('Mau belanja lagi?')
-                                        if(menuUtama == false){
-                                            menuUtama = 6
+                                        alert('kembalian anda Rp'+balance)
+                                        home = confirm('Mau shopping lagi?')
+                                        if(home == false){
+                                            home = 6
                                         }
                                     }else{
-                                        Cart.nama = []
-                                        Cart.stok = []
+                                        Cart.name = []
+                                        Cart.stock = []
                                         Cart.price = []
                                         Cart.total = []
                                         alert('terimakasih')
-                                        menuUtama = confirm('Mau belanja lagi?')
-                                        if(menuUtama == false){
-                                            menuUtama = 6
+                                        home = confirm('Mau shopping lagi?')
+                                        if(home == false){
+                                            home = 6
                                         }
                                     }
                                 }
@@ -103,33 +108,32 @@
                     }
                 }
             }
-            // menuUtama = confirm('belanja lagi?')
+            // home = confirm('shopping lagi?')
 
-            if(menuUtama == 2){
-                inputanNama = prompt('masukkan nama buah')
-                inputanNama = inputanNama.toLowerCase()
-                Buah.nama.push(inputanNama)
-                inputanStok = parseInt(prompt('masukkan stok buah'))
-                Buah.stok.push(inputanStok)
-                inputanHarga = parseInt(prompt('masukkan harga satuan'))
-                Buah.price.push(inputanHarga)  
-                alert(cetakOutput())
+            if(home == 2){
+                inputName = prompt('masukkan nama buah')
+                inputName = inputName.toLowerCase()
+                inputStock = parseInt(prompt('masukkan stok buah'))
+                inputPrice = parseInt(prompt('masukkan harga satuan'))
+                Fruit = new DetailFruit(inputName,inputPrice,inputStock)
+                ListFruit.push(Fruit)
+                alert(generateOutput())
             }
-            else if(menuUtama == 3){
-                pilihBuah = parseInt(prompt(cetakOutput()))
-                inputanNama = prompt('masukkan nama buah')
-                inputanNama = inputanNama.toLowerCase()
-                Buah.nama[pilihBuah-1] = inputanNama
-                let inputanStok = parseInt(prompt('masukkan stok buah'))
-                Buah.stok[pilihBuah-1] = inputanStok
-                let inputanHarga = parseInt(prompt('masukkan harga satuan'))
-                Buah.price[pilihBuah-1] = inputanHarga 
-                alert(cetakOutput())
+            else if(home == 3){
+                choose = parseInt(prompt(generateOutput()))
+                inputName = prompt('masukkan nama buah')
+                inputName = inputName.toLowerCase()
+                ListFruit[choose-1].name = inputName
+                let inputStock = parseInt(prompt('masukkan stok buah'))
+                ListFruit[choose-1].stock = inputStock
+                let inputPrice = parseInt(prompt('masukkan harga satuan'))
+                ListFruit[choose-1].price = inputPrice
+                alert(generateOutput())
             }
-            else if(menuUtama == 4){
-                alert(cetakOutput())
+            else if(home == 4){
+                alert(generateOutput())
             }
-            else if(menuUtama == 5){
+            else if(home == 5){
                 alert('Selamat Tinggal')
                 run = false
             }
