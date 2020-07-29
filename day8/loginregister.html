@@ -1,0 +1,46 @@
+<html>
+    <script>
+        let database = []
+        let menu = 0
+        let run = true
+        let inputUsername, inputPass
+        class UserData {
+            constructor(_username, _password, _role){
+                this.username = _username
+                this.password = _password
+                this.role = _role
+            }
+        }
+
+        let User = new UserData('administrator','admin123','admin')
+        database.push(User)
+
+        while(run){
+            menu = parseInt(prompt('1.Login\n2.Register\n3.Exit'))
+            if((menu == 0)||(menu > 3)){
+                alert('menu salah')
+            }
+            if(menu == 1){
+                inputUsername = prompt('username?')
+                inputPass = prompt('password?')
+                let user = database.filter((val) => val.username == inputUsername && val.password == inputPass)
+                console.log(user)
+                console.log(user.length)
+                console.log(database)
+                if(user.length){
+                    alert('selamat datang ' + user[0].username)
+                    menu = 1
+                }else{
+                    alert('salah input')
+                }
+            }else if(menu == 2){
+                inputUsername = prompt('username?')
+                inputPass = prompt('password?')
+                User = new UserData(inputUsername,inputPass,'user')
+                database.push(User)
+            }else{
+                run = false
+            }
+        }
+    </script>
+</html>
