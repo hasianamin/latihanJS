@@ -10,3 +10,28 @@ console.log('============')
 for(let i = 0; i < nums.length; i++){
     console.log(`${i+1}.Value = ${nums[i]}, Index = ${i}`)
 }
+
+const user = (name, greeting, callback) => {
+    return callback(name, greeting)
+}
+
+let cetak = user('ian', 'hallo ', (name, greeting) => {
+    return greeting + name}
+)
+
+console.log(cetak)
+console.log('=====')
+
+let result = []
+
+const output = (arr, callback) => {
+    for(let i = 0; i < arr.length; i++){
+        callback(arr[i])
+    }
+}
+
+output(nums, (num) => {
+    result.push(num)
+})
+
+console.log(result)
