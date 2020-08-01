@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+        }
+
+        div.formWrapper {
+            margin: 13px;
+        }
+
+        table, th, td{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        table{
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        table.one {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        table.inside {
+            margin: 20px;
+        }
+
+        thead th {
+            padding: 20px;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <table class="one">
+        <thead>
+            <th>Form Product</th>
+            <th>Form Hewan</th>
+        </thead>
+        <tr>
+            <td>
+                <div class="formWrapper">
+                    <form action="">
+                        <p>Nama: <input type="text" id="name"></p>
+                        <p>Harga: <input type="number" id="price"></p>
+                        <p>Kondisi: 
+                            <input type="radio" name="condition" value="Baru" onclick="funcCondition(this.value)">Baru
+                            <input type="radio" name="condition" value="Second" onclick="funcCondition(this.value)">Second
+                        </p>
+                        <p>Kategori:
+                            <select id="category">
+                                <option value="Elektronik">Elektronik</option>
+                                <option value="Pakaian">Pakaian</option>
+                                <option value="Otomotif">Otomotif</option>
+                            </select>
+                        </p>
+                        <input type="button" value="Tambahkan" onclick="funcSubmit('produk')">
+                    </form>
+                </div>
+            </td>
+            <td>
+                <div class="formWrapper">
+                    <form action="">
+                        <p>Nama: <input type="text"  id="nameH"></p>
+                        <p>Harga: <input type="number"  id="priceH"></p>
+                        <p>Kelamin: 
+                            <input type="radio" name="sex" value="Jantan" onclick="funcGender(this.value)">Jantan
+                            <input type="radio" name="sex" value="Betina" onclick="funcGender(this.value)">Betina
+                        </p>
+                        <p>Status:
+                            <input type="radio" name="stat" value="Liar" onclick="funcStat(this.value)">Liar
+                            <input type="radio" name="stat" value="Peliharaan" onclick="funcStat(this.value)">Peliharaan
+                        </p>
+                        <input type="button" value="Tambahkan" onclick="funcSubmit('animal')">
+                    </form>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <thead>
+            <tr>
+                <th>Data Barang</th>
+                <th>Data Hewan</th>
+            </tr>
+        </thead>
+        <tr>
+            <td>
+                <table class="inside">
+                    <thead>
+                        <tr>
+                            <th>Nama</th>
+                            <th>Harga</th>
+                            <th>Kondisi</th>
+                            <th>Kategori</th>
+                        </tr>
+                    </thead>
+                    <tbody id="product">
+
+                    </tbody>
+                </table>
+            </td>
+            <td>
+                <table class="inside">
+                    <thead>
+                        <tr>
+                            <th>Nama</th>
+                            <th>Umur</th>
+                            <th>Kelamin</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="animal">
+
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <script>
+        let condition
+        let listProduct = []
+        let inputProduct
+        let listH = []
+        let inputH
+        let createTr, createTd, contentTd
+        let gender, status
+
+        const funcCondition = (cond) => {
+            condition = cond
+        }
+
+        const funcGender = (gen) => {
+            gender = gen
+        }
+
+        const funcStat = (sta) => {
+            status = sta
+        }
+
+
+        
+        const funcSubmit = (opt) => {
+            if(opt == 'produk'){
+                let name = document.getElementById("name").value
+                let price = document.getElementById("price").value
+                let category = document.getElementById("category").value
+                console.log(name + price + category + condition)
+                inputProduct = new DetailProduct(name, price, condition, status)
+                listProduct.push(inputProduct)
+                console.log(listProduct)
+                let tableProduct = document.getElementById("product")
+    
+                for(let i = 0; i < listProduct.length; i++){
+                    createTr = document.createElement("tr")
+                    for(let j = 0; j < 4; j++){
+                        createTd = document.createElement("td")
+                        if(j == 0){
+                            contentTd = document.createTextNode(listProduct[i].name)
+                        }else if(j == 1){
+                            contentTd = document.createTextNode(listProduct[i].price)
+                        }else if(j == 2){
+                            contentTd = document.createTextNode(listProduct[i].condition)
+                        }else{
+                            contentTd = document.createTextNode(listProduct[i].category)
+                        }
+                        createTd.appendChild(contentTd)
+                        createTr.appendChild(createTd)
+                    }
+                }
+                tableProduct.appendChild(createTr)
+            }
+            else if(opt == 'animal'){
+                let nameH = document.getElementById("nameH").value
+                let priceH = document.getElementById("priceH").value
+                inputH = new DetailH(nameH, priceH, gender, status)
+                listH.push(inputH)
+                let tableH = document.getElementById("animal")
+    
+                for(let i = 0; i < listH.length; i++){
+                    createTr = document.createElement("tr")
+                    for(let j = 0; j < 4; j++){
+                        createTd = document.createElement("td")
+                        if(j == 0){
+                            contentTd = document.createTextNode(listH[i].nameH)
+                        }else if(j == 1){
+                            contentTd = document.createTextNode(listH[i].priceH)
+                        }else if(j == 2){
+                            contentTd = document.createTextNode(listH[i].genderH)
+                        }else{
+                            contentTd = document.createTextNode(listH[i].statusH)
+                        }
+                        createTd.appendChild(contentTd)
+                        createTr.appendChild(createTd)
+                    }
+                }
+                tableH.appendChild(createTr)
+            }
+
+        }
+
+        class DetailProduct{
+            constructor(_name, _price, _category, _condition){
+                this.name = _name
+                this.price = _price
+                this.condition = _condition
+                this.category = _category
+            }
+        }
+
+        class DetailH{
+            constructor(_nameH, _priceH, _gender, _status){
+                this.nameH = _nameH
+                this.priceH = _priceH
+                this.genderH = _gender
+                this.statusH = _status
+            }
+        }
+
+
+    </script>
+</body>
+</html>

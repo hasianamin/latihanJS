@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="form1">
+        <h1>Masukkan angka</h1>
+        <input type="text" id="input" placeholder="masukkan angka">
+    </form>
+    <button onclick="myFunction()">submit</button>
+    <p id = "res"></p>
+    <script>
+        const myFunction = () => {
+            let value = document.getElementById("input").value
+            console.log(value)
+            value *= value
+            document.getElementById("res").innerHTML = value
+        }
+    </script>
+</body>
+</html>

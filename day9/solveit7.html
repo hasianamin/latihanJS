@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <table>
+            <tr>
+                <td>angka 1</td>
+                <td><input type="text" id="angka1"></td>
+            </tr>
+            <tr>
+                <td>angka 2</td>
+                <td><input type="text" id="angka2"></td>
+            </tr>
+        </table>
+    </form>
+    <button onclick="myFunction()">submit</button>
+    <p id="hasil">Hasil</p>
+    <script>
+        const myFunction = () => {
+            let input1 = document.getElementById("angka1").value
+            let input2 = document.getElementById("angka2").value
+
+            let hasil = input1 ** input2
+            document.getElementById("hasil").innerHTML = hasil
+        }
+    </script>
+</body>
+</html>

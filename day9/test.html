@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="form">
+        <table>
+            <tr>
+                <td>Nama</td>
+                <td><input type="text" id="nama"></td>
+            </tr>
+            <tr>
+                <td>Umur</td>
+                <td><input type="number" id="umur"></td>
+            </tr>
+            <tr>
+                <td>Kelamin</td>
+                <td>
+                    <input type="radio" name="genders" onclick="myGender(this.value)" value="pria">Pria
+                    <input type="radio" name="genders" onclick="myGender(this.value)" value="wanita">Wanita
+                </td>
+            </tr>
+            <tr>
+                <td>Hobi</td>
+                <td>
+                    <input type="checkbox" name="hobi" value="olah raga">Olah raga
+                    <input type="checkbox" name="hobi" value="tidur">Tidur
+                    <input type="checkbox" name="hobi" value="membaca">Membaca
+                </td>
+            </tr>
+        </table>
+    </form>
+    <button onclick="myFunc()">Klik</button>
+    <p id="tes">Hasil</p>
+
+    <script>
+        let input3
+        const myGender = (gender) => {
+            input3 = gender
+        }
+        const myFunc = () => {
+            let input1 = document.getElementById("nama").value
+            let input2 = document.getElementById("umur").value
+
+            let hobi = document.getElementsByName("hobi")
+            console.log(hobi)
+            let input4 = ""
+            for(let i=0; i < hobi.length; i++){
+                if(hobi[i].checked){
+                    input4 += hobi[i].value + " "
+                    // console.log(hobi[i])
+                }
+            }
+            
+            document.getElementById("tes").innerHTML = `${input1}, ${input2} tahun, ${input3} hobi ${input4}`
+        }
+    </script>
+</body>
+</html>

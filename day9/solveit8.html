@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <table>
+            <tr>
+                <td>kalimat</td>
+                <td><input type="text" id="input1"></td>
+            </tr>
+            <tr>
+                <td>huruf yg dicari</td>
+                <td><input type="text" id="input2"></td>
+            </tr>
+        </table>
+    </form>
+    <button onclick="myFunction()">Cari</button>
+    <p id="hasil">hasil</p>
+    <script>
+        let kalimats = []
+        const myFunction = () => {
+            let input2 = document.getElementById("input2").value
+            let input1 = document.getElementById("input1").value
+            console.log(typeof(input1))
+            kalimats = input1.split('')
+            console.log(kalimats)
+            let hitung = 0
+            for(let i = 0; i < kalimats.length; i++){
+                if(input2 == kalimats[i]){
+                    hitung += 1
+                    console.log(hitung)
+                }
+            }
+            document.getElementById("hasil").innerHTML = `terdapat hururf ${input2} sebanyak ${hitung}`
+        }
+    </script>
+</body>
+</html>

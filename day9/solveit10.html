@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <table>
+            <tr>
+                <td>1</td>
+                <td>Siapakah presiden ketiga Indonesia?</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="radio" name="q1" onclick="myFunction1(this.value)" value="a">BJ Habibie
+                    <input type="radio" name="q1" onclick="myFunction1(this.value)" value="b">Abdurahman Wahid
+                    <input type="radio" name="q1" onclick="myFunction1(this.value)" value="c">Soekarno
+                    <input type="radio" name="q1" onclick="myFunction1(this.value)" value="d">Jokowi
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Berikut yang bukan bahasa pemrograman?</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="radio" name="q2" onclick="myFunction2(this.value, this.name)" value="a">Python
+                    <input type="radio" name="q2" onclick="myFunction2(this.value, this.name)" value="b">Micro:bit
+                    <input type="radio" name="q2" onclick="myFunction2(this.value, this.name)" value="c">JavaScript
+                    <input type="radio" name="q2" onclick="myFunction2(this.value, this.name)" value="d">Java
+                </td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Apa judul yang diplagiat Via Vallen?</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="radio" name="q3" onclick="myFunction3(this.value, this.name)" value="a">Qing Fei Dei Yi
+                    <input type="radio" name="q3" onclick="myFunction3(this.value, this.name)" value="b">Ting Hai
+                    <input type="radio" name="q3" onclick="myFunction3(this.value, this.name)" value="c">Mirai E Kiroro
+                    <input type="radio" name="q3" onclick="myFunction3(this.value, this.name)" value="d">Hau Siang Hau Siang
+                </td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Siapakah sosok dibalik topeng batman?</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="radio" name="q4" onclick="myFunction4(this.value, this.name)" value="a">Natasha Romanov
+                    <input type="radio" name="q4" onclick="myFunction4(this.value, this.name)" value="b">Peter Parker
+                    <input type="radio" name="q4" onclick="myFunction4(this.value, this.name)" value="c">Tony Stark
+                    <input type="radio" name="q4" onclick="myFunction4(this.value, this.name)" value="d">Bruce Wayne
+                </td>
+            </tr>
+        </table>
+    </form>
+    <button onclick="result()">Submit</button>
+    <p id="hasil">Poin anda = </p>
+    <script>
+        let point = []
+        const myFunction1 = (answer) => {
+            if(answer == "a") point[0] = 25
+            else point[0] = 0 
+            return point           
+        }
+        const myFunction2 = (answer) => {
+            if(answer == "b") point[1] = 25
+            else point[1] = 0          
+        }
+        const myFunction3 = (answer) => {
+            if(answer == "c") point[2] = 25
+            else point[2] = 0          
+        }
+        const myFunction4 = (answer) => {
+            if(answer == "d") point[3] = 25
+            else point[3] = 0          
+        }
+        const result = () => {
+            let total = point.reduce((a, b) => a + b, 0)
+            document.getElementById("hasil").innerHTML = `Poin anda = ${total}`
+        }
+        console.log(point)
+    </script>
+</body>
+</html>

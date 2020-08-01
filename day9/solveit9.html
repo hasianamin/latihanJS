@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <table>
+            <tr>
+                <td>angka 1</td>
+                <td><input type="number" id="input1"></td>
+            </tr>
+            <tr>
+                <td>angka 2</td>
+                <td><input type="number" id="input2"></td>
+            </tr>
+        </table>
+    </form>
+    <button onclick="myFunc(this.value)" value="kali">Kali</button>
+    <button onclick="myFunc(this.value)" value="bagi">bagi</button>
+    <button onclick="myFunc(this.value)" value="tambah">tambah</button>
+    <button onclick="myFunc(this.value)" value="kurang">kurang</button>
+    <button onclick="myFunc(this.value)" value="modulus">modulus</button>
+    <button onclick="myFunc(this.value)" value="pangkat">pangkat</button>
+    <p id="hasil">Hasil</p>
+    <script>
+        // let hasil = 0
+        let myFunc = (operator) => {
+            let hasil = 0
+            let input1 = parseInt(document.getElementById("input1").value)
+            let input2 = parseInt(document.getElementById("input2").value)
+            if(operator == "kali") hasil = input1 * input2
+            else if(operator == "bagi") hasil = input1 / input2
+            else if(operator == "tambah") hasil = input1 + input2
+            else if(operator == "kurang") hasil = input1 - input2
+            else if(operator == "modulus") hasil = input1 % input2
+            else hasil = input1 ** input2 
+            document.getElementById("hasil").innerHTML = hasil
+        }
+    </script>
+</body>
+</html>
