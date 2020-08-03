@@ -47,9 +47,9 @@
         <tr>
             <td>
                 <div class="formWrapper">
-                    <form action="">
-                        <p>Nama: <input type="text" id="name"></p>
-                        <p>Harga: <input type="number" id="price"></p>
+                    <form onsubmit="funcSubmit(event,'produk')">
+                        <p>Nama: <input type="text" id="name" autocomplete="off"></p>
+                        <p>Harga: <input type="number" id="price" autocomplete="off"></p>
                         <p>Kondisi: 
                             <input type="radio" name="condition" value="Baru" onclick="funcCondition(this.value)">Baru
                             <input type="radio" name="condition" value="Second" onclick="funcCondition(this.value)">Second
@@ -61,15 +61,15 @@
                                 <option value="Otomotif">Otomotif</option>
                             </select>
                         </p>
-                        <input type="button" value="Tambahkan" onclick="funcSubmit('produk')">
+                        <input type="submit">
                     </form>
                 </div>
             </td>
             <td>
                 <div class="formWrapper">
-                    <form action="">
-                        <p>Nama: <input type="text"  id="nameH"></p>
-                        <p>Harga: <input type="number"  id="priceH"></p>
+                    <form onsubmit="funcSubmit(event,'animal')">
+                        <p>Nama: <input type="text"  id="nameH" autocomplete="off"></p>
+                        <p>Harga: <input type="number"  id="priceH" autocomplete="off"></p>
                         <p>Kelamin: 
                             <input type="radio" name="sex" value="Jantan" onclick="funcGender(this.value)">Jantan
                             <input type="radio" name="sex" value="Betina" onclick="funcGender(this.value)">Betina
@@ -78,7 +78,7 @@
                             <input type="radio" name="stat" value="Liar" onclick="funcStat(this.value)">Liar
                             <input type="radio" name="stat" value="Peliharaan" onclick="funcStat(this.value)">Peliharaan
                         </p>
-                        <input type="button" value="Tambahkan" onclick="funcSubmit('animal')">
+                        <input type="submit">
                     </form>
                 </div>
             </td>
@@ -147,13 +147,14 @@
 
 
         
-        const funcSubmit = (opt) => {
+        const funcSubmit = (e, opt) => {
+            e.preventDefault()
             if(opt == 'produk'){
                 let name = document.getElementById("name").value
                 let price = document.getElementById("price").value
                 let category = document.getElementById("category").value
                 console.log(name + price + category + condition)
-                inputProduct = new DetailProduct(name, price, condition, status)
+                inputProduct = new DetailProduct(name, price, category, condition)
                 listProduct.push(inputProduct)
                 console.log(listProduct)
                 let tableProduct = document.getElementById("product")
