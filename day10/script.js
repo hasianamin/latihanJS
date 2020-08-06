@@ -62,6 +62,7 @@ const showCart = () => {
                                 <th>Fruit</th>
                                 <th>Image</th>
                                 <th>Price</th>
+                                <th>Action</th>
                             </tr>`
     let listToPay = ''
     cartList.forEach((val, index) => {
@@ -70,6 +71,7 @@ const showCart = () => {
                         <td>${val.name}</td>
                         <td><img src='${val.img}' alt=''></td>
                         <td>${val.price}</td>
+                        <td><input type='button' onclick='deleteList(${index})' value='delete'/></td>
                     </tr>`
     })
     tableCart.innerHTML = listToPay
@@ -93,7 +95,7 @@ const showTotal = () => {
 
 
 let limit
-let time = 10
+let time = 20
 let timer = document.getElementById("timer")
 
 const timeLimit = () => {
@@ -132,4 +134,10 @@ const pay = () => {
             location.reload();
         }
     }
+}
+
+const deleteList = (getIndex) => {
+    cartList.splice(getIndex, 1)
+    console.log('delete ' + getIndex)
+    showCart()
 }
