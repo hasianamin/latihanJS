@@ -8,24 +8,43 @@
         body {
             text-align: center;
         }
+
         form {
             width: 50%;
             margin: 0 auto;
         }
+
+        table, th, td {
+            border: 1px solid sandybrown;
+            border-collapse: collapse;
+            padding: 10px;
+        }
+
+        img {
+            width: 250px;
+        }
+        
     </style>
 </head>
 <body>
     <h2>Madding</h2>
-    <form onsubmit="login(event)">
-        Username: 
-        <input type="text" id="username">
-        <br>
-        <br>
-        Password:
-        <input type="password" id="pwd">
-    </form>
+    <div id="login"></div>
     <br>
-    <input type="submit" value="Login">
+    <form action="">
+        <table align="center">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Kegiatan</th>
+                    <th>Hari</th>
+                    <th>Poster</th>
+                    <th colspan="2">Act</th>
+                </tr>
+            </thead>
+            <tbody id="content"></tbody>
+        </table>
+        <div id="message"></div>
+    </form>
     <script src="script.js"></script>
 </body>
 </html>
