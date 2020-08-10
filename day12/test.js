@@ -4,13 +4,16 @@ let listProduct = [
     { id: 1579581081342,category: 'Cloth' , name: "Hoodie", price: 300000, stock :7 },
     { id: 1579581081577,category: 'Fruit' , name: "Apple", price: 10000, stock :8 }]
 
+let listId = [1579581080923, 1579581081342, 1579581081130]
+
+let res = 0
 
 const checkId = (x) => {
-    return x == 1579581080923
+    return x.id == listId[2]
 }
 
 const myFunction = () => {
-    listProduct.findIndex(checkId)
+    return res = listProduct.findIndex(checkId)
 }
 
 console.log(myFunction())

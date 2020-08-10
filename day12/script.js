@@ -53,9 +53,9 @@ const login = (e) => {
         return value.username == username && value.pwd == pwd
     })
     if(login.length){
-        showActivity(login[0].role)
         document.getElementById('message').innerHTML = `<h1>${login[0].username}</h1>
         <input type='button' onclick='logout()' value='Logout'>`
+        showActivity(login[0].role)
     }else{
         document.getElementById('message').innerHTML = `<h1>password salah</h1>`
     }
@@ -64,8 +64,8 @@ const login = (e) => {
 
 const showActivity = (role) => {
     let acts = ''
-    document.getElementById('username'). value =''
-    document.getElementById('pwd'). value =''
+    document.getElementById('username').value =''
+    document.getElementById('pwd').value =''
     if(role == 'user'){
         dataActivity.forEach((value, index) => {
             acts += `<tr>
@@ -76,6 +76,7 @@ const showActivity = (role) => {
                     <td></td>
                     </tr>`
         })
+        document.getElementById('content').innerHTML = acts
     }else{
         dataActivity.forEach((value, index) => {
             acts += `<tr id='row${index}'>
@@ -97,9 +98,9 @@ const showActivity = (role) => {
                 <td><input type='text' id='poster'></td>
                 <td colspan='2'><input type='button' onclick='addAct()' value='Add todo'></td>
                 </tr>`        
+        document.getElementById('content').innerHTML = acts
+        selectDay()
     }
-    document.getElementById('content').innerHTML = acts
-    selectDay()
 }
 
 const selectDay = () => {
@@ -152,13 +153,13 @@ const editAct = (data) => {
     selectDay()
 }
 
-const saveEdit = (data) => {
-    let editAct = document.getElementById(`editAct${data}`).value
-    let editDay = document.getElementById(`editDay${data}`).value
-    let editPoster = document.getElementById(`editPoster${data}`).value
-    dataActivity[data].activity = editAct
-    dataActivity[data].day = editDay
-    dataActivity[data].poster = editPoster
+const saveEdit = (getIndex) => {
+    let editAct = document.getElementById(`editAct${getIndex}`).value
+    let editDay = document.getElementById(`day${getIndex}`).value
+    let editPoster = document.getElementById(`editPoster${getIndex}`).value
+    dataActivity[getIndex].activity = editAct
+    dataActivity[getIndex].day = editDay
+    dataActivity[getIndex].poster = editPoster
     return showActivity()
 }
 

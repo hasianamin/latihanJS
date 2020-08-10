@@ -10,12 +10,6 @@ const lelang = (a) => {
             priceInit = Math.ceil(priceInit + (priceInit * 20 / 100))
         }
     }
-    
-    if(priceInit > 30000000){
-        return `menit ke ${a} barang sudah dibeli`
-    }else{
-        return priceInit
-    }
+    return priceInit > 30000000? `menit ke ${a} barang sudah dibeli` : priceInit
 }
-
-console.log(lelang(49))
+console.log(lelang(2))
