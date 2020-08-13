@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        form {
+            width: 50%;
+            margin: 0 auto;
+        }
+
+        table, th, td {
+            border: 1px solid sandybrown;
+            border-collapse: collapse;
+            padding: 10px;
+        }
+
+        img {
+            width: 250px;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <h1>Login Form</h1>
+        Username <input type="text" id="uname">
+        <br>
+        <p id='checkUname'></p>
+        Password <input type="password" id="pwd">
+        <br>
+        <p id='checkPwd'></p>
+        <div id="btn">
+            <input type="button" value="Register" onclick="register()">
+            <input type="button" value="Login" onclick="login()">
+        </div>
+    </form>
+    <h2 id="message"></h2>
+    <script>
+        let user = [{username : "hasian", pass : "123"}]
+        let userInput, passInput
+        let message = document.getElementById("message")
+        const register = () => {
+            userInput = document.getElementById("uname").value
+            passInput = document.getElementById("pwd").value
+            if(!userInput || !passInput){
+                message.innerHTML = 'please fill the form correctly'
+            } else{
+                let checkUser = user.filter((value) => {
+                    return value.username == userInput
+                })
+                if(checkUser.length){
+                    message.innerHTML = "username already registered"
+                } else{
+                    user.push({username : userInput, pass : passInput})
+                    message.innerHTML = 'Successfully registered, please login'
+                    document.getElementById("uname").value = ''
+                    document.getElementById("pwd").value = ''
+                }
+            }
+        }
+
+        const login = () => {
+            userInput = document.getElementById("uname").value
+            passInput = document.getElementById("pwd").value
+            if(!userInput || !passInput){
+                message.innerHTML = 'please fill the form correctly'
+            } else{
+                let addUser = user.filter((value) => {
+                    return value.username == userInput && value.pass == passInput
+                })
+                if(addUser.length){
+                    console.log(addUser)
+                    message.innerHTML =  'Welcome ' + addUser[0].username
+                    document.getElementById("uname").value = ''
+                    document.getElementById("pwd").value = ''
+                    document.getElementById("btn").innerHTML = `<input type="button" value="Logout" onclick="logout()">`
+                }else{
+                    message.innerHTML = 'you have not registered yet'
+                }
+            }
+        }
+
+        const logout = () => {
+            
+        }
+    </script>
+</body>
+</html>
