@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+        }
+        table {
+            border: 1px solid black;
+            padding: 10px;
+            border-collapse: collapse;
+        }
+        td, th {
+            border: 1px solid black;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <table align="center">
+            <tr>
+                <td colspan="2"><h1>Input Manusia</h1></td>
+            </tr>
+            <tr>
+                <td>Nama : </td>
+                <td><input type="text" id="name"></td>
+            </tr>
+            <tr>
+                <td>Usia : </td>
+                <td><input type="number" id="age"><br><br></td>
+            </tr>
+            <tr>
+                <td>Kelamin : </td>
+                <td> Pria<input type="radio" name="gender" onclick="getGender(this.value)" value="Pria"> 
+                    Wanita<input type="radio" name="gender" onclick="getGender(this.value)" value="Wanita">
+                </td>
+            </tr>
+            <tr>
+                <td>Pekerjaan : </td>
+                <td><select id="job"></select></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="button" value="Submit" onclick="inputData()"></td>
+            </tr>
+        </table>
+    </form>
+    <br><br>
+    <input type="button" value="Nama" onclick="bubbleSort(showSort, 'name')">
+    <input type="button" value="Usia" onclick="bubbleSort(showSort, 'age')">
+    <input type="button" value="Kelamin" onclick="bubbleSort(showSort, 'gender')">
+    <input type="button" value="Pekerjaan" onclick="bubbleSort(showSort, 'job')">
+    <br><br>
+    <table align="center" id="showFIlter">
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Nama</th>
+                <th>Usia</th>
+                <th>Kelamin</th>
+                <th>Pekerjaan</th>
+            </tr>
+        </thead>
+        <tbody id="content"></tbody>
+    </table>
+    
+    <script src="sorting.js"></script>
+</body>
+</html>
