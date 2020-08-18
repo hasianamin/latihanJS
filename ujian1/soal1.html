@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Drawing Tools</h1>
+    <ol>
+        <li>Persegi</li>
+        <li>Segitiga Siku2 Rata Kiri</li>
+        <li>Segitiga Siku2 Rata Kanan</li>
+    </ol>
+    <p>Jenis Bangunan:</p>
+    <input type="text" id="pilihan">
+    <p>Ukuran:</p>
+    <input type="text" id="ukuran"><br><br>
+    <input type="button" onclick="submit()" value="Lihat">
+    <div id="content"></div>
+    <script>
+        const submit = () => {
+            let jenis = document.getElementById("pilihan").value
+            let ukuran = document.getElementById("ukuran").value
+            console.log(jenis)
+            console.log(ukuran)
+            let hasil = ''
+            if(jenis == 1){
+                for(let i=0; i<ukuran; i++){
+                    for(let j=0; j< ukuran; j++){
+                        hasil += '*'
+                    }
+                    hasil += '<br>'
+                }
+                document.getElementById('content').innerHTML = `<p>${hasil}</p>`
+            } else if(jenis == 2){
+                for(let i=0; i < ukuran; i++){
+                    for(let j=0; j <=i; j++){
+                        hasil += '*'
+                    }
+                    hasil += '<br>'
+                }
+                document.getElementById('content').innerHTML = `<p>${hasil}</p>`
+            } else if(jenis == 3){
+                for(let i=0; i<ukuran; i++){
+                    for(let j=ukuran; j > i; j--){
+                        hasil += '&nbsp'
+                    }
+                    for(let k=0; k <=i; k++){
+                        hasil += '*'
+                    }
+                    hasil += '<br>'
+                }
+                document.getElementById('content').innerHTML = `<p>${hasil}</p>`
+            }
+        }
+    </script>
+</body>
+</html>

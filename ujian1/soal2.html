@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let run = true
+        let x
+        let result = []
+        let min = ''
+        let max = ''
+        let i = 0
+        while(run){
+            x = parseInt(prompt("Masukkan angka"))
+            i++
+            if(x >= 0){
+                result.push(x)
+                if(i == 1){
+                    min = x
+                    max = x
+                } else{
+                    if(x > max){
+                        max = x
+                    }
+                    if(x < min){
+                        min = x
+                    }
+                }
+            } else{
+                run = false
+                alert('input bukan angka')
+                console.log(result)
+                console.log('nilai terendah: ' + min)
+                console.log('nilai tertinggi: ' + max)
+            }
+        }
+    </script>
+</body>
+</html>
